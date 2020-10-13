@@ -1,5 +1,6 @@
-# my-app
-
+# bootstrap-vue
+- 使用bootstrap-vue開發
+- 前端管理頁面pao宿舍管理
 ## Project setup
 ```
 npm install
