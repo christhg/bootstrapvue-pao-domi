@@ -1,69 +1,66 @@
 <template>
-  <div>
-    <div v-for="(item, index) in items" :key="item.ID">
-    <b-card-group deck v-if="index % 2 == 0">
+  <div class="container33">
+    <div class="row22">
+      <div class="col11">
+      <b-card-group columns>
+          <!-- <b-card 
+          header="大官邸" 
+          img-src="../assets/pic1.png"
+          style="max-width: 15rem;"
+          class="mb-2"
+        >
+            <b-list-group>
+              <b-list-group-item href="#">Cras justo odio</b-list-group-item>
+              <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
+              <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
+            </b-list-group>
 
-      <!-- <b-card 
-      header="大官邸" 
-      img-src="../assets/pic1.png"
-      style="max-width: 15rem;"
-      class="mb-2"
-    >
-        <b-list-group>
-          <b-list-group-item href="#">Cras justo odio</b-list-group-item>
-          <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
-          <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
-        </b-list-group>
+            <p class="card-text mt-2">
+              Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
+              consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur
+              mollit voluptate est in duis laboris ad sit ipsum anim Lorem.
+            </p>
+          </b-card>
 
-        <p class="card-text mt-2">
-          Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
-          consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur
-          mollit voluptate est in duis laboris ad sit ipsum anim Lorem.
-        </p>
-      </b-card>
+          <b-card 
+          header="願景之旅" 
+          img-src="../assets/pic2.png"
+          style="max-width: 15rem;"
+          class="mb-2"
+        >
+            <b-list-group flush>
+              <b-list-group-item href="#">Cras justo odio</b-list-group-item>
+              <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
+              <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
+            </b-list-group>
 
-      <b-card 
-      header="願景之旅" 
-      img-src="../assets/pic2.png"
-      style="max-width: 15rem;"
-      class="mb-2"
-    >
-        <b-list-group flush>
-          <b-list-group-item href="#">Cras justo odio</b-list-group-item>
-          <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
-          <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
-        </b-list-group>
+            <b-card-body>
 
-        <b-card-body>
+              Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
+              consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur
+              mollit voluptate est in duis laboris ad sit ipsum anim Lorem.
+            </b-card-body>
+          </b-card> -->
+          <!-- style="max-width: 20rem;" -->
+          <b-card  v-for="item in activeItems" :key="item.ID"
+          :header="item.CASE_NAME"
 
-          Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
-          consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur
-          mollit voluptate est in duis laboris ad sit ipsum anim Lorem.
-        </b-card-body>
-      </b-card> -->
-
-      <b-card  
-      :header="item.CASE_NAME"
-      :img-src="require('../assets/pic2.png')"
-      style="max-width: 25rem;"
-      class="mb-2"
-      >
-          <b-list-group flush>
-            <b-list-group-item href="#">{{item.PIC}}</b-list-group-item>
-            <b-list-group-item href="#">地址：{{item.ADDRESS}}</b-list-group-item>
-            <b-list-group-item href="#">樓層：{{item.FLOOR}}</b-list-group-item>
-            <b-list-group-item href="#">格局：{{item.PATTERN}}</b-list-group-item>
-          </b-list-group>
-
-          <b-card-body>
-
-            Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
-            consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur
-            mollit voluptate est in duis laboris ad sit ipsum anim Lorem.
-          </b-card-body>
-      </b-card>
-    </b-card-group>
-  </div>
+          class="mb-3"
+          >
+              <b-img fluid :src="require('../assets/pic'+item.ID+'.png')" alt="No image" />
+              <b-card-body>
+                Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
+                consequat non elit enim exercitation cillum aliqua consequat id aliqua.
+              </b-card-body>
+              <b-list-group flush>
+                <b-list-group-item href="#">樓層：{{item.FLOOR}}</b-list-group-item>
+                <b-list-group-item href="#">格局：{{item.PATTERN}}</b-list-group-item>
+                <b-list-group-item href="#">地址：{{item.ADDRESS}}</b-list-group-item>
+              </b-list-group>
+          </b-card>
+      </b-card-group>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -85,6 +82,13 @@ export default {
   },
   created(){
       this.fetchData()
+  },
+  computed: {
+    activeItems: function() {
+      return this.items.filter(function(item){
+        return item.ID <= 10
+      })
+    }
   },
   methods:{
             fetchData() {
@@ -120,3 +124,32 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="css">
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+  max-width: 1140px;  /* 隨螢幕尺寸而變，當螢幕尺寸 ≥ 1200px 時是 1140px。 */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  position: relative;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+</style>

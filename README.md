@@ -1,6 +1,6 @@
 # bootstrap-vue
 - 使用bootstrap-vue開發
-- 前端管理頁面pao宿舍管理
+- 前端頁面pao宿舍管理,調用後端Restful API
 ## Project setup
 ```
 npm install
